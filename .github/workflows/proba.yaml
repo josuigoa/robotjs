@@ -30,3 +30,8 @@ jobs:
 
     - name: install
       run: npm install robotjs
+      
+    - name: list
+      run: ls -l node_modules/robotjs
+    - name: list
+      run: ls -l node_modules/robotjs/build/Release
