@@ -1,0 +1,32 @@
+name: CMake
+
+on:
+  workflow_dispatch:
+    inputs:
+      node_version:
+        description: 'NodeJs version'
+
+env:
+  # Customize the CMake build type here (Release, Debug, RelWithDebInfo, etc.)
+  BUILD_TYPE: Release
+
+jobs:
+  build:
+    # The CMake configure and build commands are platform agnostic and should work equally well on Windows or Mac.
+    # You can convert this to a matrix build if you need cross-platform coverage.
+    # See: https://docs.github.com/en/free-pro-team@latest/actions/learn-github-actions/managing-complex-workflows#using-a-build-matrix
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v3
+
+    - name: Setup Node.js
+      uses: actions/setup-node@v2
+      with:
+        node-version: '18'
+        
+    - name: proba
+      run: apt update -y && apt install -y libxtst-dev libpng++-dev make gcc
+
+    - uses: install
+      run: npm install robotjs
