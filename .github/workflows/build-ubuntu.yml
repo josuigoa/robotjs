@@ -31,9 +31,9 @@ jobs:
         version: latest
         platform: x64
 
-    - uses: actions/setup-python@v2
+    - uses: actions/setup-python@v3
       with:
-        python-version: '2.7'
+        python-version: '3.7'
     
     - name: Install deps
       run: sudo apt-get install libxtst-dev libpng++-dev
