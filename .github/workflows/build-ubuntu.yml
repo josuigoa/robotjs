@@ -36,7 +36,7 @@ jobs:
         python-version: '3.7'
     
     - name: Install deps
-      run: sudo apt-get install libxtst-dev libpng++-dev
+      run: sudo apt-get install libxtst-dev libpng++-dev make
     
     - name: Instsall node-gyp
       run: npm install -g node-gyp
