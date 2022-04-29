@@ -1,4 +1,4 @@
-name: CMake
+name: instalatu
 
 on:
   workflow_dispatch:
@@ -28,5 +28,5 @@ jobs:
     - name: proba
       run: apt update -y && apt install -y libxtst-dev libpng++-dev make gcc
 
-    - uses: install
+    - name: install
       run: npm install robotjs
