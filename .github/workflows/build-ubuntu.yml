@@ -1,0 +1,39 @@
+name: CMake
+
+on:
+  workflow_dispatch:
+    inputs:
+      node_version:
+        description: 'NodeJs version'
+
+env:
+  # Customize the CMake build type here (Release, Debug, RelWithDebInfo, etc.)
+  BUILD_TYPE: Release
+
+jobs:
+  build:
+    # The CMake configure and build commands are platform agnostic and should work equally well on Windows or Mac.
+    # You can convert this to a matrix build if you need cross-platform coverage.
+    # See: https://docs.github.com/en/free-pro-team@latest/actions/learn-github-actions/managing-complex-workflows#using-a-build-matrix
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v3
+
+    - name: Setup Node.js
+      uses: actions/setup-node@v2
+      with:
+        node-version: '18'
+
+    - uses: actions/setup-python@v3
+      with:
+        python-version: '2.7'
+    
+    - name: Install deps
+      run: sudo apt-get install libxtst-dev libpng++-dev
+    
+    - name: Instsall node-gyp
+      run: npm install -g node-gyp
+      
+    - name: Build
+      run: node-gyp rebuild
